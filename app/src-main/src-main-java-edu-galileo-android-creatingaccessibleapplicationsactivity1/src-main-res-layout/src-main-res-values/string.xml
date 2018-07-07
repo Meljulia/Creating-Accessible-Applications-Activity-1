@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Creating Accessible Activity1</string>
+    <string name="main.msg.billamount">Bill amount</string>
+    <string name="main.msg.tippercent">%s%% Tip Percent</string>
+</resources>
