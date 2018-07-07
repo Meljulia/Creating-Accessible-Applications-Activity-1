@@ -1,0 +1,64 @@
+package edu.galileo.android.creatingaccessibleapplicationsactivity1;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.etBillAmount)
+    EditText etBillAmount;
+    @BindView(R.id.tvTipPercent)
+    EditText tvTipPercent;
+
+    float percentage = 0;
+    float EXCELLENT_TIP_PERCENTAGE = 20;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
+        setTipValues();
+    }
+
+    private void setTipValues() {
+        etBillAmount.setText(getString(R.string.main_msg_tippercent, percentage));
+
+    }
+
+    @OnClick({R.id.ibExcellentService})
+    public void onClick(View view){
+        switch (view.getId(){
+            case R.id.ibExcellentService:
+                percentage = EXCELLENT_TIP_PERCENTAGE;
+                break;
+        }
+
+        setTipValues();
+    }
+
+    @OnTextChanged(R.id.etBillAmount)
+    public void onTextChanged(){
+        setTipValues();
+
+    }
+
+    private void BillAmount() {
+
+        if (percentage = 0)
+            percentage = DEFAULT_TIP_PERCENTAGE;
+
+        if (!etBillAmount.getText().toString().equals("")&& !etBillAmount.getText().toString().equals("."))
+            totalBillAmount = Float.valueOf(etBillAmount.getText().toString());
+        else
+            totalBillAmount = 0;
+
+        tipTotal =(totalBillAmount*percentage)/100;
+        finalBillAmount =totalBillAmount + tipTotal;
+    }
+
+}
